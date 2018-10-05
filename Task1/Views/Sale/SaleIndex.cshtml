@@ -1,0 +1,175 @@
+﻿@model    List<Task1.Models.SaleInfo>
+@{
+    ViewBag.Title = "Create";
+}
+
+<html>
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            width: 100%;
+            padding: 2px;
+        }
+
+        tr, td {
+            border-top: 1px solid grey;
+            border: 1px, solid;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            column-span: all;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h2> Product Details </h2>
+    <a id="CreateNew" href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Create New</a>
+
+
+    <div id="myModal" class="modal fade" role="dialog">
+
+         Modal content
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+
+
+                <form id="ProdForm">
+
+                    <div class="form-group">
+                        <label for="Customer Name">Customer Name:</label>
+
+                        <input type="text" class="form-control" id="Cust_Name" name="Custname" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Customer Address ">Customer Address:</label>
+                        <input type="text" class="form-control" id="Cust_Address" name="Address">
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <input type="Reset" value="Submit" class="btn btn-primary" id="btnSubmit">
+                <a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+
+
+        $('#myModal').on('show.bs.modal', function (e) {
+            var bookId = $(e.relatedTarget).data('book-id');
+
+
+            $(e.currentTarget).find('input[name="Custname"]').val(bookId);
+
+        });
+
+        $(Document).ready(function () {
+
+            $("#btnSubmit").click(function () {
+
+                var cust_Name = $("#Cust_Name").val();
+                var cust_Address = $("#Cust_Address").val();
+
+                var prodData = {
+                    Cust_Name: cust_Name,
+                    Cust_Address: cust_Address,
+                };
+
+                $.ajax({
+
+                    type: "Post",
+                    url: "/Customer/Create",
+
+                    data:prodData,
+                    success: function () {
+
+                        $("#myModal").modal("hide");
+                        location.reload(true);
+                    }
+
+                });
+
+            })
+
+        })
+
+
+
+
+
+    </script>
+
+    S
+
+    <table>
+
+        <tr>
+            <td> Customer Name</td>
+            <td> Product Name</td>
+            <td> Store Name</td>
+            <td> Date Sold</td>
+
+            <td>Action(Edit)</td>
+            <td>Action(Delete)</td>
+
+
+        </tr>
+
+
+        @foreach (var sale in Model)
+        {
+            <tr>
+                <td>@sale.Cust_Name</td>
+                <td>@sale.Product_Name</td>
+                <td>@sale.Store_Name</td>
+                <td>@sale.Date_Sold</td>
+
+
+                <td><a href="#myModal" class="btn btn-warning" data-toggle="modal" data-book-id=@sale.Cust_Name>Edit</a></td>
+
+
+                <td>  @Html.ActionLink("Delete", "Delete", "Customer", new { id = sale.Id }, new { @class = "btn btn-danger" })</td>
+
+
+
+
+
+
+            </tr>
+        }
+
+
+        <tr>
+            <td></td>
+        </tr>
+
+    </table>
+
+
+</body>
+
+</html>
+
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

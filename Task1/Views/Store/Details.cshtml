@@ -1,0 +1,79 @@
+﻿@model Task1.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<html>
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            width: 100%;
+            padding: 2px;
+        }
+
+        tr, td {
+            border-top: 1px solid grey;
+            border: 1px, solid;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            column-span: all;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <h2>    Product </h2>
+
+    @Html.ActionLink("Create", "Create", "store")
+
+    <table>
+
+        <tr>
+
+            <th>@Html.LabelFor(model => Model.Id)</th>
+            <th>@Html.LabelFor(model => Model.Product_Name)</th>
+            <th>@Html.LabelFor(model => Model.Product_Price)</th>
+            <th>Action(Edit)</th>
+            <th>Action(Delete)</th>
+            <th>
+        </tr>
+
+        <tr>
+
+            <td>@Html.DisplayFor(model => Model.Id)</td>
+            <td>@Html.DisplayFor(model => Model.Product_Name)</td>
+            <td>@Html.DisplayFor(model => Model.Product_Price)</td>
+
+            <td> @Html.ActionLink("Edit", "Edit", "Store") </td>
+            <td> @Html.ActionLink("Delete", "Delete", "Store")</td>
+
+        </tr>
+
+
+
+        <tr>
+            <td></td>
+        </tr>
+
+    </table>
+
+
+
+
+
+    <div>
+        @Html.ActionLink("Back to List", "Details")
+    </div>
+
+</body>
+
+</html>
+

@@ -1,0 +1,84 @@
+﻿@model List<Product>
+@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+<head>
+    <style>
+
+        table {
+            font-family: arial, sans-serif;
+            width: 100%;
+            padding:2px;
+        }
+        tr,td{
+            border-top:1px solid grey;
+            border : 1px, solid;
+            text-align:left;
+            padding: 8px;
+        }
+        th{
+            column-span:all;
+        }
+      
+
+    </style>
+
+</head>
+
+<body>
+
+    <h2>    Product </h2>
+
+    @Html.ActionLink("Create", "Create", "store")
+   
+    <table>
+
+        <tr>
+            <td> Name</td>
+            <td> Price</td>
+            <td></td>
+
+        </tr>
+
+
+        @foreach (var prod in Model)
+            {
+            <tr>
+                <td>@prod.Product_Name</td>
+                <td>@prod.Product_Price</td>
+                <td>
+                    <table>
+                        <tr>
+                            @Html.ActionLink("Edit", "Edit", "Store") |
+                            @Html.ActionLink("Details", "Details", "Store",new {id=prod.Id },null)|
+                            @Html.ActionLink("Delete", "Delete", "Store")
+
+                        </tr>
+                    </table>
+                </td>
+
+
+            </tr>
+        }
+
+
+        <tr>
+            <td></td>
+        </tr>
+
+    </table>
+
+
+
+
+
+    <div>
+        @Html.ActionLink("Back to List", "Details")
+    </div>
+
+</body>
+
+</html>
+

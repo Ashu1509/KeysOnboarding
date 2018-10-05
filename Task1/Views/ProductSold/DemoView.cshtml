@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>DemoView</title>
+</head>
+<body>
+    <div> 
+        
+
+            <div class="form-group">
+                <label>Select Name</label>
+                @*<select data-bind="options : $parent.Customer, optionsText : 'Name', value : $parent.Customer"></select>*@
+
+                @Html.DropDownList("Id", ViewBag.Customer as SelectList)
+
+
+            </div>
+
+    </div>
+</body>
+</html>

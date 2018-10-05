@@ -1,0 +1,65 @@
+﻿@model Task1.Product
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ProductDetails</title>
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            width: 100%;
+            padding: 2px;
+        }
+
+        tr, td, th {
+            border-top: 1px solid grey;
+            border: 1px, solid;
+            text-align: left;
+            padding: 8px;
+        }
+
+        /*th {
+            column-span: all;
+        }*/
+    </style>
+
+</head>
+<body>
+        <h4>Product</h4>
+
+
+        <table>
+
+            <tr>
+
+                <th>@Html.LabelFor(model => Model.Id)</th>
+                <th>@Html.LabelFor(model => Model.Product_Name)</th>
+                <th>@Html.LabelFor(model => Model.Product_Price)</th>
+                <th>
+            </tr>
+
+            <tr>
+
+                <td>@Html.DisplayFor(model => Model.Id)</td>
+                <td>@Html.DisplayFor(model => Model.Product_Name)</td>
+                <td>@Html.DisplayFor(model => Model.Product_Price)</td>
+
+            </tr>
+
+        </table>
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+</body>
+
+</html>
+
